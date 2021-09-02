@@ -1,0 +1,21 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create/Edit Page {{entry}} 
+{% endblock %}
+
+{% block body %}
+{%if existing %}
+<div class = "alert alert-danger" role ="alert">
+    <h2>{{message}}</h2>
+    <h2>If you want to view or edit it >> <a href = "wiki/{{entry}}" class="alert-link">click here</a></h2><br>
+</div>
+{%endif%}  
+    <h1>Create a New page or Edit Existing page </h1>
+        <form action = "{% url 'newpage' %}" method = "post">
+            {% csrf_token %}
+            {{ form }}<br>
+            <input type="submit">
+        </form>
+
+{% endblock %}

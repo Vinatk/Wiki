@@ -1,0 +1,15 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Search {{value}}
+{% endblock %}
+
+{% block body %}
+    <form action = "{% url 'search' %}" method = "get">
+        {% csrf_token %}
+    <h1>Search Results for '{{ value }}' </h1>
+     {% for entry in entries %}  
+            <li><a href = "wiki/{{entry}}">{{ entry }}</a></li>
+     {% endfor %}  
+    </form>
+{% endblock %}
